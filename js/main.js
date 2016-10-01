@@ -1,12 +1,21 @@
-
 alert("Bienvenido a la Calculadora hecha con javascript")
 var op1 = prompt("Primer Operando");
 var op2 = prompt("Segundo Operando");
-var operador = prompt("Operador (multiplicar,mult,*,dividir,divide,/)");
-var oper = ['multiplicar','mult','*','dividir','divide','/'];
+var operador = prompt("Operador (suma,sum,+,resta,subt,-,multiplicar,mult,*,dividir,divide,/)");
+var oper = ['suma','sum','+','resta','subt','-','multiplicar','mult','*','dividir','divide','/'];
 var veroper = false;
 var resultado;
 var opera;
+
+function sumar(p1, p2){
+  resultado = parseFloat(p1)+parseFloat(p2);
+  return resultado;
+};
+
+function restar(p1, p2){
+  resultado = parseFloat(p1)-parseFloat(p2);
+  return resultado;
+};
 
 function multiplicar(p1, p2){
   resultado = parseFloat(p1)*parseFloat(p2);
@@ -15,7 +24,7 @@ function multiplicar(p1, p2){
 
 function dividir(p1, p2){
   resultado = parseFloat(p1)/parseFloat(p2);
-  return resultado;
+  return resultado;a
 };
 
 if(!isNaN(op1) && !isNaN(op2)){
@@ -23,12 +32,18 @@ if(!isNaN(op1) && !isNaN(op2)){
     if(oper[pos]===operador){
       veroper = true
       if(pos < 3){
-        opera = '*';
-        resultado = multiplicar(op1,op2);
+        opera = '+';
+        resultado = sumar(op1,op2);
       }else if(pos > 2 && pos < 6){
-               opera = '/';
-               resultado = dividir(op1,op2);
-            }
+               opera = '-';
+               resultado = restar(op1,op2);
+            }else if(pos > 5 && pos < 9){
+                     opera = '*';
+                     resultado = multiplicar(op1,op2);;
+                  }else {
+                     opera = '/';
+                     resultado = dividir(op1,op2);
+                  }
     };
 
   };
